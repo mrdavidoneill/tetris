@@ -1,4 +1,4 @@
-# Snake
+# Tetris
 
 My take on the classic game Tetris
 
