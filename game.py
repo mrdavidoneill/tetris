@@ -2,6 +2,7 @@ from locals import *
 from screen import Screen
 from piece import Piece
 from landed import Grid
+from music import Music
 import random
 
 class Game:
@@ -25,6 +26,7 @@ class Game:
 
         Screen.start_screen()         # Start screen
         Grid.start_grid()             # Start grid
+        Music.play_bg_music()
 
         piece = Piece(random.choice(list(Piece.PIECES.keys())))     # Create piece with random shape
         next_shape = random.choice(list(Piece.PIECES.keys()))       # Get a random shape for next piece
@@ -65,6 +67,7 @@ class Game:
                     for row in completed_rows:
                         Grid.flash_row(row)
                         Screen.update()
+                        Music.play_clear_line()
                         Game.fpsClock.tick(Game.FPS)
                         Grid.remove_row(row)
                     self.score += Game.POINTS[len(completed_rows)]
