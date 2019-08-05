@@ -82,10 +82,24 @@ class Grid:
                                   Screen.GRID_SIZE)
                 if cell:
                     pygame.draw.rect(Screen.surface, Piece.PIECES[cell][COLOR], block_position)
+                    pygame.draw.rect(Screen.surface, BLACK, block_position, 1)
                 else:
                     pygame.draw.rect(Screen.surface, Screen.BG_COLOR, block_position)
                 block_x += 1
             block_y += 1
+
+    @classmethod
+    def flash_row(cls, row):
+        """ Flashes a row to white """
+        for index, cell in enumerate(cls.landed_pieces[row]):
+            block_position = ((index * Screen.GRID_SIZE) + (Screen.GRIDX_0 * Screen.GRID_SIZE),
+                              (row * Screen.GRID_SIZE) + (Screen.GRIDY_0 * Screen.GRID_SIZE),
+                              Screen.GRID_SIZE,
+                              Screen.GRID_SIZE)
+            pygame.draw.rect(Screen.surface, WHITE, block_position)
+            pygame.draw.rect(Screen.surface, BLACK, block_position, 1)
+
+
 
 
 # ================ FOR TESTING PURPOSES ================ #

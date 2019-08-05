@@ -152,6 +152,9 @@ class Piece:
                                       Screen.GRID_SIZE,
                                       Screen.GRID_SIZE)
                     pygame.draw.rect(self.surface, self.color, block_position)
+                    pygame.draw.rect(self.surface, BLACK, block_position, 1)
+
+
                 block_x += 1
             block_y += 1
 
@@ -167,6 +170,7 @@ class Piece:
                                       Screen.GRID_SIZE,
                                       Screen.GRID_SIZE)
                     pygame.draw.rect(self.surface, self.color, block_position)
+                    pygame.draw.rect(self.surface, BLACK, block_position, 1)
                 block_x += 1
             block_y += 1
 

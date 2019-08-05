@@ -63,6 +63,9 @@ class Game:
                 completed_rows = Grid.check_complete()
                 if completed_rows:
                     for row in completed_rows:
+                        Grid.flash_row(row)
+                        Screen.update()
+                        Game.fpsClock.tick(Game.FPS)
                         Grid.remove_row(row)
                     self.score += Game.POINTS[len(completed_rows)]
                     if self.score > int(Game.best_score):
@@ -78,7 +81,7 @@ class Game:
 
                 # Check if gameover, if so update the best_score.txt if necessary
                 if piece.gameover:
-                    if self.score > int(Game.best_score):
+                    if self.score == int(Game.best_score):
                         with open("best_score.txt", "w") as file:
                             file.write(str(self.score))
                     Game.gameover()                                     # Run gameover() method
