@@ -21,7 +21,7 @@ class Game:
         self.run()
 
     def run(self):
-        """ Initialises the Screen, calls Screen.display_score function and initialises a new snake and a new apple """
+        """ Starts the Screen, starts the Grid and makes new piece and next piece """
 
         Screen.start_screen()         # Start screen
         Grid.start_grid()             # Start grid
