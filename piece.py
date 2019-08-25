@@ -115,8 +115,7 @@ class Piece:
 
 
     def __init__(self, shape=None, next=False):
-        """ Initialises new snake with colour of black, and a 3 block body.
-            Direction set to left, """
+        """ Initialise new piece with random shape (or optional input specific shape) """
 
         if not shape:
             self.shape = random.choice(list(Piece.PIECES.keys()))
@@ -132,13 +131,7 @@ class Piece:
         self.y = Piece.gridy_min
         self.direction_x = 0
         self.direction_y = 1
-        if not next:
-            if self.can_move() == LANDED:
-                self.draw()
-                self.gameover = True
-            else:
-                self.draw()
-
+        self.time_last_dropped = None
 
     def draw(self):
         """ Draws piece on display surface """
@@ -190,12 +183,25 @@ class Piece:
                 block_x += 1
             block_y += 1
 
-    def move(self):
+    def move(self, dir=None):
         """ Erases piece from display surface, updates y position.
             Calculates if it's outside the screen, or side hits landed block and if so: returns False,
             Else if bottom hits landed block return "landed"
             Else returns "possible"
             Then draws piece in new position. """
+
+        if not dir or dir == DOWN:
+            self.direction_x = 0
+            self.direction_y = 1
+
+        elif dir is LEFT:
+            self.direction_x = -1
+            self.direction_y = 0
+
+        elif dir is RIGHT:
+            self.direction_x = 1
+            self.direction_y = 0
+
 
         if self.can_move() == POSSIBLE:
             self.erase()
