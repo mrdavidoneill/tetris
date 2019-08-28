@@ -122,7 +122,6 @@ class Piece:
         else:
             self.shape = shape
 
-        self.gameover = False
         self.surface = Screen.surface
         self.rotation = 0
         self.body = Piece.PIECES[self.shape][ROTATIONS][self.rotation]
@@ -277,32 +276,6 @@ class Piece:
             self.body = Piece.PIECES[self.shape][ROTATIONS][self.rotation]
             self.draw()
 
-    def stop(self):
-        """ Stops piece by setting it's X and Y direction to 0 """
-        self.direction_x = 0
-        self.direction_y = 0
-
-    def set_direction(self, dir):
-        """ Sets its direction to given argument of one of:
-            UP, DOWN, RIGHT, LEFT """
-        if dir == DOWN:
-            self.direction_x = 0
-            self.direction_y = 1
-        elif dir == RIGHT:
-            self.direction_x = 1
-            self.direction_y = 0
-        elif dir == LEFT:
-            self.direction_x = -1
-            self.direction_y = 0
-
-    def get_direction(self):
-        """ Returns the direction the snake is headed """
-        if self.direction_x == 1:
-            return RIGHT
-        elif self.direction_x == -1:
-            return  LEFT
-        elif self.direction_y == 1:
-            return DOWN
 
 
 # ================ FOR TESTING PURPOSES ================ #
@@ -327,8 +300,6 @@ if __name__ == "__main__":
         # If new piece can't move:
         if piece.move() == LANDED:
             piece = Piece()
-            if piece.gameover:
-                break
         else:
             piece.rotate()
 
