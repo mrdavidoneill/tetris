@@ -32,5 +32,6 @@ LANDED = "landed"
 POSSIBLE = "possible"
 ROTATIONS = "rotations"
 COLOR = "color"
+RESTART = "restart"
 
 KEY_TO_DIR = {K_LEFT: LEFT, K_RIGHT: RIGHT, K_DOWN: DOWN}
